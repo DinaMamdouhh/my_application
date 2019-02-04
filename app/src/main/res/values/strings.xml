@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Thermonitor.</string>
+    <string name="name">com.example.thermonitor.name</string>
+    <string name="password">com.example.thermonitor.password</string>
+    <string name="button01">Button</string>
+    <string name="button02">Button</string>
+    <string name="username">Username</string>
+    <string name="Login">Button</string>
+    <string name="login">Login</string>
+    <string name="button">Button</string>
+    <string name="Username">Name</string>
+    <string name="Password">Name</string>
+    <string name="checkbox">Remember me</string>
+
+
+</resources>

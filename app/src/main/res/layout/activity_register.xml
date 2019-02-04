@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Register"
+    android:background="@drawable/dinaf"
+    >
+
+    <EditText
+        android:textStyle="bold"
+        android:id="@+id/editTextname"
+        android:layout_width="414dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="40dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/editTextemail"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:textStyle="bold"
+        android:id="@+id/editTextemail"
+        android:layout_width="414dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="40dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/editTexttusername"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:textStyle="bold"
+        android:id="@+id/editTexttusername"
+        android:layout_width="414dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="40dp"
+        android:ems="10"
+        android:hint="Username"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/editTextpasswordd"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextconfrim"
+        android:layout_width="414dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="28dp"
+        android:ems="10"
+        android:hint="Confrim Password"
+        android:inputType="textPassword"
+        android:textColorHint="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/signin"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/signin"
+        android:layout_width="152dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginBottom="32dp"
+        android:shadowColor="@color/colorAccent"
+        android:text="Sing in"
+        android:textStyle="bold"
+        android:textColorHighlight="@color/colorAccent"
+        android:textColorLink="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:textStyle="bold"
+        android:id="@+id/editTextpasswordd"
+        android:layout_width="414dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="40dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColorHint="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/editTextconfrim"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
