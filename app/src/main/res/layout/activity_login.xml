@@ -10,13 +10,13 @@
 
 
     <EditText
-        android:id="@+id/editTextusername"
+        android:id="@+id/editTextemails"
         android:layout_width="403dp"
         android:layout_height="62dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="49dp"
         android:ems="10"
-        android:hint="Username"
+        android:hint="Email"
         android:inputType="textPersonName"
         android:textColorHint="@color/colorAccent"
         android:textStyle="bold"
@@ -34,7 +34,7 @@
         android:textColorHint="@color/colorAccent"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextusername" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextemails" />
 
     <Button
         android:id="@+id/login"
