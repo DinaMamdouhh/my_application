@@ -75,7 +75,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                             Toast.makeText(Register.this, "PASSWORDS DOESN'T MATCH!!", Toast.LENGTH_SHORT).show();
                         } else if (task.isSuccessful()) {
                             Toast.makeText(Register.this, "SIGNIN BUTTON IS CLICKED", Toast.LENGTH_SHORT).show();
-                            Intent intent3 = new Intent(Register.this, ListActivity.class);
+                            Intent intent3 = new Intent(Register.this, DeviceListActivity.class);
                             startActivity(intent3);
                         } else {
                             Log.d("ERROR", task.getException().toString());

@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         if(user!=null){
             finish();
-            startActivity(new Intent(LoginActivity.this,ListActivity.class));
+            startActivity(new Intent(LoginActivity.this,DeviceListActivity.class));
         }
 
         Signup.setOnClickListener(this);
@@ -76,23 +76,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     progressDialog.dismiss();
                     if (!(Emaillogin.getText().toString().equals("") && Password.getText().toString().equals(""))) {
-                       if(task.isSuccessful()) {
-                           Toast.makeText(LoginActivity.this, "LOGIN BUTTON IS CLICKED", Toast.LENGTH_SHORT).show();
-                           Intent intent1 = new Intent(LoginActivity.this, ListActivity.class);
-                           startActivity(intent1);
-                           Emaillogin.getText().clear();
-                           Password.getText().clear();
-                       }
-                       else{
-                           Log.d("ERROR", task.getException().toString());
-                           Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        if(task.isSuccessful()) {
+                            Toast.makeText(LoginActivity.this, "LOGIN BUTTON IS CLICKED", Toast.LENGTH_SHORT).show();
+                            Intent intent1 = new Intent(LoginActivity.this, DeviceListActivity.class);
+                            startActivity(intent1);
+                            Emaillogin.getText().clear();
+                            Password.getText().clear();
+                        }
+                        else{
+                            Log.d("ERROR", task.getException().toString());
+                            Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();
-                           Counter--;
-                             if (Counter == 0) {
+                            Counter--;
+                            if (Counter == 0) {
                                 Login.setEnabled(false);
                                 Toast.makeText(LoginActivity.this, "ERROR:PLEASE SIGNUP", Toast.LENGTH_SHORT).show();
                             }
-                       }
+                        }
                     }
 
                     else if (Emaillogin.getText().toString().equals("") && Password.getText().toString().equals("")) {
