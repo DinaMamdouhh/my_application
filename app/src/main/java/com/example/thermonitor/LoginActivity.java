@@ -1,10 +1,12 @@
 package com.example.thermonitor;
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
-import android.preference.PreferenceManager;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,9 +22,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-
-import java.util.HashMap;
 
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
@@ -80,6 +79,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Toast.makeText(LoginActivity.this, "LOGIN BUTTON IS CLICKED", Toast.LENGTH_SHORT).show();
                             Intent intent1 = new Intent(LoginActivity.this, DeviceListActivity.class);
                             startActivity(intent1);
+
                             Emaillogin.getText().clear();
                             Password.getText().clear();
                         }

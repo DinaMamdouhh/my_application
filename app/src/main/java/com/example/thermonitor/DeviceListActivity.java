@@ -1,5 +1,6 @@
 package com.example.thermonitor;
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -10,17 +11,28 @@ import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.content.pm.PackageManager;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.Manifest;
+import android.widget.Toast;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DeviceListActivity extends Activity implements View.OnClickListener {
+    static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     TextView txt;
     WifiManager Wifi;
     WifiReceiver receiverWifi;
@@ -31,16 +43,26 @@ public class DeviceListActivity extends Activity implements View.OnClickListener
     boolean scanfinish = false;
     ListView lv;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_list);
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED)
+                requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 87);
+        }
         txt = findViewById(R.id.texttttttt);
         lv =findViewById(R.id.list);
         CustomAdapter customAdapter = new CustomAdapter(getApplicationContext(), wifinames);
         lv.setAdapter(customAdapter);
         Wifi = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        if (Wifi.isWifiEnabled() == false)
+        {
+            Toast.makeText(getApplicationContext(), "Wifi is Disabled......making it enabled", Toast.LENGTH_LONG).show();
+            Wifi.setWifiEnabled(true);
+        }
+
         receiverWifi = new WifiReceiver();
         registerReceiver(receiverWifi, new IntentFilter(
                 WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
@@ -71,6 +93,7 @@ public class DeviceListActivity extends Activity implements View.OnClickListener
 
     protected void onResume() {
         super.onResume();
+
         registerReceiver(receiverWifi, new IntentFilter(
                 WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
 
@@ -93,7 +116,7 @@ public class DeviceListActivity extends Activity implements View.OnClickListener
             wifiList = Wifi.getScanResults();
 
             for (int i = 0; i < wifiList.size(); i++) {
-                if(wifiList.get(i).SSID.equalsIgnoreCase("espap"))
+               if(wifiList.get(i).SSID.equalsIgnoreCase("espap"))
                     wifinames.add("SSID: " + wifiList.get(i).SSID + "\n" + " Mac Address:" + wifiList.get(i).BSSID);
 
 
