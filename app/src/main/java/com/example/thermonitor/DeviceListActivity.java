@@ -122,6 +122,7 @@ public class DeviceListActivity extends Activity implements View.OnClickListener
 
             }
 
+
             txt.setText(stringbuilder);
             CustomAdapter customAdapter = new CustomAdapter(getApplicationContext(), wifinames);
             lv.setAdapter(customAdapter);

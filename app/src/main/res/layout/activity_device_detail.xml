@@ -8,4 +8,13 @@
 
     android:background="@drawable/dinaf">
 
+    <TextView
+        android:id="@+id/joly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="102dp"
+        android:layout_marginTop="110dp"
+        android:hint="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
