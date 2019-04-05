@@ -22,33 +22,33 @@ public class DeviceDetailActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthStateListener;
     private DatabaseReference myRef;
     private TextView joly;
+    private String dataPath = "Temprature";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        joly = findViewById(R.id.joly);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_detail);
-        mAuth = FirebaseAuth.getInstance();
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        myRef = mFirebaseDatabase.getReference();
-        FirebaseUser user = mAuth.getCurrentUser();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("thermometerr-8de82");
-        Query query = reference.child("Temprature");
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
+        joly =findViewById(R.id.joly);
+        Bundle bundle = getIntent().getExtras();
+
+        if(bundle.getString("ESPMAC")!=null){
+            dataPath = bundle.getString("ESPMAC");
+        }
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference(dataPath);
+        ref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    String temp = dataSnapshot.getValue().toString();
-                    Log.d("FAIL", temp);
-                }
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Long s= dataSnapshot.getValue(Long.class);
+                joly.setText("Temperature Here is: "+s);
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.d("FAIL", databaseError.getMessage());
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                joly.setText(databaseError.getMessage());
             }
         });
 
-        Log.d("FAIL", "onCreate: ");
     }
 }
