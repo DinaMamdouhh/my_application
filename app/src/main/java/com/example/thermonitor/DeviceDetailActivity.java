@@ -41,7 +41,7 @@ public class DeviceDetailActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Long s= dataSnapshot.getValue(Long.class);
-                joly.setText("Temperature Here is: "+s);
+                joly.setText("TEMPRATURE HERE IS: "+s);
             }
 
             @Override
